@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <button id="btn">显示所有数据</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>用户名</th>
+                <th>密码 </th>
+                <th>真实姓名</th>
+            </tr>
+        </thead>
+        <tbody id="show-body"></tbody>
+    </table>
+</body>
+    <script>
+            $(function () {
+                $("#btn").click(function () {
+                    var xhr = createXhr();
+                    xhr.open("get","/01-server",true);
+                    xhr.onreadystatechange = function () {
+                        if(xhr.readyState==4&&xhr.status==200){
+                            var arr = JSON.parse(xhr.responseText);
+                            var html = '';
+                            $.each(arr,function (i,obj) {
+                              html += "<tr>";
+                                  html += "<th>"+obj.id+"</th>";
+                                  html += "<th>"+obj.uname+"</th>";
+                                  html += "<th>"+obj.upwd+"</th>";
+                                  html += "<th>"+obj.realname+"</th>";
+                              html += "</tr>"
+                      });
+                            $("#show-body").html(html)
+                        }
+                    };
+                    xhr.send(null)
+                })
+            })
+    </script>
+</html>

@@ -1,0 +1,206 @@
+
+1.JSON
+	后台处理Json
+	在后台查询出数据在转换为JSON格式的字符串，在响应给前端。到了后端后在将字符串转换为js对象。
+
+	1.后台先获取数据
+		类型允许为
+			1.元组  2.列表 3.字典
+	2.在后台将数据转换为符合json格式的字符串
+	3.在后台将json格式的字符串进行响应
+	4.在前端将json格式的字符串解析成js对象
+2.在python中的json处理
+	元组，列表，字典 直接使用python中的json类就可以转换
+		import json
+		jsonStr = json.dumps(元组|列表|字典)
+		return jsonStr
+3.前端中的json处理
+	由于在服务器端响应回来的数据是String，有些时候有必要将响应回来的数据转成js对象或数组
+		在js中
+			JSON对象 = JSON.parse(JSON字符串)
+
+==========================================================================================================
+
+1、Jquery ajax
+	在jQuery 中提供了对原生的ajax的封装
+
+	1.$obj.load(url,data,callback)
+		作用：异步加载数据到$obj 元素中
+		参数：	
+			1、url：异步请求的地址
+			2.data：传递给服务器的参数（可选）
+				1.可以传递普通的字符串
+					"name=zhangsf&age=85"
+				2.可以传递JSON
+				{
+					"name":"zhangsf",
+					"age":85
+				}
+			3.callback:异步请求完成后要执行的操作（可选）
+				回调函数	
+					function(resText,statusText){
+							resText:响应数据
+							statusText：响应的状态文本
+					}
+
+	2.$.get(url,data,callback,type)
+		1.url:异步请求地址
+		2.data：请求提交的数据
+			可以是字符串，可以是json
+		3.callback： 请求成功时的回调函数
+			function(resText){
+			resText:表示响应回来的文本
+			}
+		4.type：响应回来的数据的类型
+			1.html：响应回来的文本是html文本
+			2.text：响应回来的文本是普通文本
+			3.json：响应回来的数据是json对象
+
+			示例：
+
+	3.$.post(url,data,callback,type) 与get类似，获取参数用request.form
+==============================================================================================
+
+1、jQuery 对 ajax 的支持
+	$.ajax()
+		语法：   $.ajax({请求参数的json对象});
+		参数对象：
+		1.url：  字符串  表示异步请求的地址
+		2.type： 字符串  表示请求的方式 get或post
+		3.data:  传递到服务器端的参数，可以是字符串（"name=sf.zhang&age=85"）也可以是json对象	{
+								                                                       "	name":"sf.zhang",
+								                                                       "age":85
+																							}
+		4.dataType： 字符串，响应回来的数据的格式
+			1、"html" 2."xml"  3."text"  4."script" 5."json" 6."jsonp" 有关跨域的响应格式
+		5.success：回调函数，请求和响应成功时候回来执行的操作
+		==========================
+		非常规操作
+		6.error：回调函数，请求或响应失败时回来执行的操作
+		7.beforeSend：回调函数，发送ajax请求之前执行的操作，如果 return false，则终止请求发送
+2、跨域（Cross Domain)
+	1.什么是跨域
+			非同源的网页，相互发送请求的过程，就是跨域。同源参考下面解释。
+		HTTP协议中有一个策略 - "同源策略"
+		同源：多个地址中，相同的协议，相同的域名，相同的端口被视为"同源"
+		在HTTP中，必须是同源地址才能互相发送请求，非同源拒绝请求(<script>和《img>除外)。
+		http://www.tedu.cn/a.html
+		http://www.tedu.cn/b.html  
+		以上地址是"同源"
+
+		http://www.tedu.cn/a.html
+		https://www.tedu.cn/b.html 
+		由于协议不同，所以不是"同源"
+
+		http://localhost/a.html
+		http://127.0.0.1/a.html   
+		二者不是同源，域名不同
+
+		http://www.tedu.cn:80/a.html
+		http://www.tedu.cn:8080/b.html
+		由于端口不同，所以不是同源
+
+	2.跨域的解决方案
+		通过<script> 向服务器资源发送请求，由服务器资源指定前端页面的哪个方法来执行响应的数据
+
+		示例：参考06
+			 http://localhost:5000/static/06-crossdomain.html
+			 http://127.0.0.1:5000/06-server  
+
+			 <body>
+			    <button id="btn">跨域请求</button>
+			    <div id="show"></div>
+			    <script>
+			        /*
+			         * 跨域调用的方法，由服务器端来指定调用
+			         */
+			        function show(data){
+			            console.log("服务器端传递过来的数据："+data);
+			        }
+
+			        $(function () {
+			            $("#btn").click(function () {
+			                //正常ajax请求无法完成跨域访问
+			                /*var url = "http://127.0.0.1:5000/06-server";
+			                $.get(url,function (data) {
+			                    $("#show").html(data)
+			                })*/
+
+			            //    原生的js完成跨域请求
+			                var body = document.getElementsByTagName("body")[0];
+			                var script = document.createElement("script");
+			                script.type = "text/javascript";
+			                script.src = "http://127.0.0.1:5000/06-server?callback=show";
+			                body.append(script);
+			            });
+			        });
+			    </script>
+			</body>
+
+			# 非同源请求
+			@app.route('/06-server')
+			def server_06():
+			    return "show('这是server_06响应回来的数据')"
+	3、jquery 的跨域
+		jsonp - json with padding
+		注：跨域只接受get请求，不接受post请求
+		$.ajax({
+			url:"xxxx",
+			type:'get',
+			dataType:"josnp", //指定为跨域请求
+			jsonp:"callback",//定义callback参数，以便获取callback传递过来的函数名
+			jsonpCallback:'xxx' //定义jsonp  的回调函数
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

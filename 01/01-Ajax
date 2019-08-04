@@ -1,0 +1,174 @@
+1、Ajax
+	概念
+		Asynchronous JavaScript And Xml
+			异步      js         和 xml
+	JSON
+		通过 js 异步的向服务器发送请求并接收响应的数据
+
+		同步访问：
+			当客户端向服务器发送请求时，服务器在处理过程中，浏览器只能等待（效率低）
+		异步访问：
+			当客户端向服务器发送请求时，服务器在处理过程中，客户端可以做其他的操作，不需要一直等待
+
+	ajax的优点
+		1、异步访问
+		2、局部刷新效果
+
+	使用场合：
+		1.搜索场合
+		2.表单验证
+		3.前后端完全分离
+2、ajax的核心对象 - 异步对象(XMLHttpRequest)
+	1、XMLHttpRequest(XHR)概念——中介代理
+		称为异步对象，代替浏览器向服务器发送异步请求并接收响应
+
+		xhr 是有js来提供
+
+
+	2、创建 异步对象（xhr）
+		主流的异步对象是 XMLHttpRequest 类型的，并且主流浏览器（IE7+,Chrome，Firefox,Safari,Opera）全部都支持 XMLHttpRequest,但在IE低版本的浏览器中（IE6及以下），就不支持 XMLHttpRequest，需要使用 ActiveXObject()
+		来创建异步对象
+
+		<script>
+			if(windown.XMLHttpRequest){
+			支持 XMLHttpRequest
+			var xhr = new XMLHttpRequest()
+			#xhr 为异步对象
+			}
+			else{
+			不支持 XMLHttpRequest，使用ActiveXObject 创建异步对象
+			var xhr = new ActiveXObject('Microsoft.XMLHTTP')
+			}
+		</script>	
+
+======================================================================================
+
+1、ajax
+	1、创建
+
+	2、xhr 的 成员
+		1.方法 -open()  
+			作用：创建请求
+			语法： open(method,url,asyn)
+			method：请求方式，取值一般是get或post
+			url：请求地址，字符串
+			asyn：是否采用异步的方式 true：异步 false：同步
+		示例：
+			xhr.open('get','/server',true)
+		2.属性 - readyState  （xhr）
+			作用：请求状态，通过不同的请求状态来表示xhr与服务器的交互情况
+			由0-4共5个值来表示5个不同的状态
+			0：请求尚未初始化
+			1：已经与服务器建立连接
+			2：服务器端已经接收请求
+			3:请求正在处理中
+			*****4：响应已经完成  ****
+		3.属性-status （服务器）
+			作用：服务器端的响应状态吗（404,500......）
+			***200：表示服务器正确处理所有请求以及给出响应***
+			404：请求资源不存在
+			500：服务器内部错误
+		4.事件 - onreadystatechange
+			作用：每当xhr的readyState发生改变时都要触发的操作   - 回调函数
+				只有当readyState的值为4并且status的值为200的时候，才可以正常的去接收响应的数据。
+		5.属性-response.text
+			作用:响应数据
+		6.方法-send()
+			作用：通知xhr向服务端发送请求
+			语法：
+				send(body)
+			get请求：body的值null
+			post请求：此处为要提交的数据
+				send("请求数据")
+	3、AJAX的操作步骤
+		1.get请求
+			1.创建 xhr 对象
+			2.创建请求 - open()
+			3.设置回调函数 -onreadystatechange
+				判断状态并接收响应数据
+			4.发送请求 - send()
+
+			请求参数
+				推荐：请求地址拼接queryString
+				xhr.open('get','/02-server?key=value&key=value',true)
+
+		2.post请求
+
+			ajax的post请求，会把Content-Type 请求消息头的值修改为text/plain;charset=UTF-8，导致服务器端没有办法正常接收数据
+
+			解决办法：
+				将Content-Type 请求消息头的值在更改回 application/x-www-form-urlencoded 即可
+
+				在send之前  添加 xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+
+			Content-Type: text/plain;charset=UTF-8
+			Content-Type: application/x-www-form-urlencoded
+2、JSON
+	1、Json的介绍
+		JSON：JavaScript Object Notation
+				js       对象   表现形式
+
+		在ajax中，允许将复杂格式的响应数据 构建成 JSON 的格式再进行响应输出
+
+	2.json的表现 	
+		1.json表示单个对象
+			1.使用 {} 表示单个对象
+			2.在 {} 中使用key:value 的形式来表示属性（数据）
+			3.key必要用 " " 引起来
+			4.value如果是字符窜的话，也需要用 "" 引起来
+			示例：
+				var obj = {
+				"name":"王老师",
+				"age":30,
+				"gender":"man"
+				}
+				#取值
+					obj.name
+
+		2.json表示一个数组
+			1、使用 [] 表示一个数组
+			2、数组中允许包含若干json对象 或 字符串
+				1.使用json数组表示若干字符串
+				var arr = ["娜娜子","小新","广志"]
+				2、使用json数组表示若干对象
+					保存三个人的信息（name,age,gender)
+					var arr = [
+						{
+						"name":"娜娜子",
+						"age":"20",
+						"gender":"女"
+						}，
+						{
+						"name":"小新",
+						"age":5,
+						"gender":"男"
+						},
+						........
+					]
+		3.使用 jq 的each() 迭代数组
+			1.$arr.each();
+				$arr: 本身就是jQuery中的数组
+				语法：
+					$arr.each(function(index,obj){
+
+					});
+					index:遍历出来的元素的下标
+					obj：遍历出来的元素
+			2、$.each();
+				$.each(arr,function(index,obj)){
+
+				})
+				arr: js的普通数组
+
+
+
+
+
+
+
+
+
+
+
+
+

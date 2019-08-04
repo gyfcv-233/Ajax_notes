@@ -1,0 +1,124 @@
+
+
+insert into province(proname) values ('北京市'),('天津市'),('上海市'),('重庆市'),('河北省'),('山西省'),('辽宁省'),('吉林省'),('黑龙江省'),('江苏省'),('浙江省'),('安徽省'),('福建省'),('江西省'),('山东省'),('河南省'),('湖北省'),('湖南省'),('广东省'),('海南省'),('四川省'),('贵州省'),('云南省'),('陕西省'),('甘肃省'),('青海省'),('台湾省'),('内蒙古自治区'),('广西壮族自治区'),('西藏自治区'),('宁夏回族自治区'),('新疆维吾尔自治区'),('香港特别行政区'),('澳门特别行政区')
+
+
+
+北京市，天津市，上海市，重庆市，河北省，山西省，辽宁省，吉林省，黑龙江省，江苏省，浙江省，安徽省，福建省，江西省，山东省，河南省，湖北省，湖南省，广东省，海南省，四川省，贵州省，云南省，陕西省，甘肃省，青海省，台湾省，内蒙古自治区，广西壮族自治区，西藏自治区，宁夏回族自治区，新疆维吾尔自治区，香港特别行政区，澳门特别行政区
+
+
+insert into city (cityname,pro_id)values("朝阳区",1);
+insert into city (cityname,pro_id)values("海淀区　",1);
+insert into city (cityname,pro_id)values("房山区",1);
+insert into city (cityname,pro_id)values("广州市",19);
+insert into city (cityname,pro_id)values(" 深圳市",19);
+insert into city (cityname,pro_id)values("珠海市",19);
+insert into city (cityname,pro_id)values("佛山市　",19);
+insert into city (cityname,pro_id)values(" 南京市",10);
+insert into city (cityname,pro_id)values("苏州市",10);
+insert into city (cityname,pro_id)values("贵阳市",22);
+insert into city (cityname,pro_id)values("黔东南州",22);
+insert into city (cityname,pro_id)values("黔南州",22);
+insert into city (cityname,pro_id)values("遵义市",22);
+insert into city (cityname,pro_id)values("黔西南州",22);
+insert into city (cityname,pro_id)values("毕节地区",22);
+insert into city (cityname,pro_id)values("铜仁地区",22);
+insert into city (cityname,pro_id)values("安顺市",22);
+insert into city (cityname,pro_id)values("六盘水市",22);
+insert into city (cityname,pro_id)values("哈尔滨市",9);
+insert into city (cityname,pro_id)values("大庆市",9);
+insert into city (cityname,pro_id)values("黑河市",9);
+insert into city (cityname,pro_id)values("大兴安岭地区",9);
+insert into city (cityname,pro_id)values("齐齐哈尔市",9);
+insert into city (cityname,pro_id)values("济南市",15);
+insert into city (cityname,pro_id)values("青岛市",15);
+insert into city (cityname,pro_id)values("泰安市",15);
+insert into city (cityname,pro_id)values("潍坊市",15);
+insert into city (cityname,pro_id)values(" 滨州市",15);
+insert into city (cityname,pro_id)values("枣庄市",15);
+insert into city (cityname,pro_id)values("郑州市",16);
+insert into city (cityname,pro_id)values("新乡市",16);
+insert into city (cityname,pro_id)values("周口市",16);
+insert into city (cityname,pro_id)values("鹤壁市",16);
+insert into city (cityname,pro_id)values("",16);
+insert into city (cityname,pro_id)values("洛阳市",16);
+insert into city (cityname,pro_id)values("许昌市",);
+insert into city (cityname,pro_id)values("松江区",3);
+insert into city (cityname,pro_id)values("宝山区",3);
+insert into city (cityname,pro_id)values("金山区",3);
+insert into city (cityname,pro_id)values("青浦区",3);
+insert into city (cityname,pro_id)values("奉贤区",3);
+insert into city (cityname,pro_id)values("卢湾区",3);
+insert into city (cityname,pro_id)values("江北区",4);
+insert into city (cityname,pro_id)values("渝北区",4);
+insert into city (cityname,pro_id)values("沙坪坝区",4);
+insert into city (cityname,pro_id)values("万州区",4);
+insert into city (cityname,pro_id)values("南岸区",4);
+insert into city (cityname,pro_id)values("合川市",4);
+insert into city (cityname,pro_id)values("武隆县",4);
+insert into city (cityname,pro_id)values("潼南县",4);
+insert into city (cityname,pro_id)values("西安市",24);
+insert into city (cityname,pro_id)values("咸阳市",24);
+insert into city (cityname,pro_id)values("渭南市",24);
+insert into city (cityname,pro_id)values("汉中市",24);
+insert into city (cityname,pro_id)values("温州市",11);
+insert into city (cityname,pro_id)values("宁波市",11);
+insert into city (cityname,pro_id)values("杭州市",11);
+insert into city (cityname,pro_id)values("金华市",11);
+insert into city (cityname,pro_id)values("绍兴市",11);
+insert into city (cityname,pro_id)values("丽水市",11);
+insert into city (cityname,pro_id)values("衢州市",11);
+insert into city (cityname,pro_id)values("湖州市",11);
+insert into city (cityname,pro_id)values("长沙市",18);
+insert into city (cityname,pro_id)values("邵阳市",18);
+insert into city (cityname,pro_id)values("张家界市",18);
+insert into city (cityname,pro_id)values("湘西州",18);
+
+
+
+北京  1
+朝阳区　 海淀区　 通州区　 房山区　 丰台区　 昌平区　 大兴区　 顺义区　 西城区　 延庆县　 石景山区　 宣武区　 怀柔区　 崇文区　 密云县　 东城区　 门头沟区　 平谷区　
+
+广东省 19
+东莞市　 广州市　 中山市　 深圳市　 惠州市　 江门市　 珠海市　 汕头市　 佛山市　 湛江市　 河源市　 肇庆市　 潮州市　 清远市　 韶关市　 揭阳市　 阳江市　 云浮市　 茂名市　 梅州市　 汕尾市　
+
+山东省 15
+济南市　 青岛市　 临沂市　 济宁市　 菏泽市　 烟台市　 泰安市　 淄博市　 潍坊市　 日照市　 威海市　 滨州市　 东营市　 聊城市　 德州市　 莱芜市　 枣庄市　
+
+
+江苏省 10
+苏州市　 徐州市　 盐城市　 无锡市　 南京市　 南通市　 连云港市　 常州市　 扬州市　 镇江市　 淮安市　 泰州市　 宿迁市
+
+河南省 16
+郑州市　 南阳市　 新乡市　 安阳市　 洛阳市　 信阳市　 平顶山市　 周口市　 商丘市　 开封市　 焦作市　 驻马店市　 濮阳市　 三门峡市　 漯河市　 许昌市　 鹤壁市　 济源市　
+
+上海市 3
+松江区　 宝山区　 金山区　 嘉定区　 南汇区　 青浦区　 浦东新区　 奉贤区　 闵行区　 徐汇区　 静安区　 黄浦区　 普陀区　 杨浦区　 虹口区　 闸北区　 长宁区　 崇明县　 卢湾区　
+
+河北省 5
+石家庄市　 唐山市　 保定市　 邯郸市　 邢台市　 河北区　 沧州市　 秦皇岛市　 张家口市　 衡水市　 廊坊市　 承德市　
+
+浙江省  11
+温州市　 宁波市　 杭州市　 台州市　 嘉兴市　 金华市　 湖州市　 绍兴市　 舟山市　 丽水市　 衢州市　
+
+陕西省 24
+西安市　 咸阳市　 宝鸡市　 汉中市　 渭南市　 安康市　 榆林市　 商洛市　 延安市　 铜川市　
+
+湖南省 18
+长沙市　 邵阳市　 常德市　 衡阳市　 株洲市　 湘潭市　 永州市　 岳阳市　 怀化市　 郴州市　 娄底市　 益阳市　 张家界市　 湘西州　
+
+
+重庆市 4
+江北区　 渝北区　 沙坪坝区　 九龙坡区　 万州区　 永川市　 南岸区　 酉阳县　 北碚区　 涪陵区　 秀山县　 巴南区　 渝中区　 石柱县　 忠县　 合川市　 大渡口区　 开县　 长寿区　 荣昌县　 云阳县　 梁平县　 潼南县　 江津市　 彭水县　 璧山县　 綦江县　 大足县　 黔江区　 巫溪县　 巫山县　 垫江县　 丰都县　 武隆县　 万盛区　 铜梁县　 南川市　 奉节县　 双桥区　 城口县　
+
+
+贵州省 22
+贵阳市　 黔东南州　 黔南州　 遵义市　 黔西南州　 毕节地区　 铜仁地区　 安顺市　 六盘水市　
+
+
+黑龙江 9
+齐齐哈尔市　 哈尔滨市　 大庆市　 佳木斯市　 双鸭山市　 牡丹江市　 鸡西市　 黑河市　 绥化市　 鹤岗市　 伊春市　 大兴安岭地区　 七台河市　
+
+
+
+

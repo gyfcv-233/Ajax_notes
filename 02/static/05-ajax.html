@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <!--<h1>这是静态网页</h1>-->
+    <!--{% if params.uname %}-->
+        <!--这是测试数据-->
+    <!--&lt;!&ndash;不能动态加载数据&ndash;&gt;-->
+    <!--{% endif %}-->
+    <p>
+        用户名：<input type="text" id="cityname">
+    </p>
+    <button id="btnAjax">ajax查询</button>
+    <p  id="show"></p>
+</body>
+    <script>
+        $(function () {
+            $("#btnAjax").click(function () {
+            //    使用get请求方式，发送名为uname的数据到服务器
+               $.ajax({
+               //    请求地址
+                   url:"/05-server",
+               //    请求方式
+                   type:'get',
+               //    请求参数
+                   data:"cityname="+$("#cityname").val(),
+               //  响应回来的数据格式
+               dataType:'json',
+               //    请求响应成功的回调函数
+                   success:function (data) {
+                       var html = '';
+                       if(data.id){
+                       //    如果data中有id属性，则说明查询成
+                           html += "<h3> id:"+data.id+"</h3>";
+                           html += "<h3> cityname:"+data.cityname+"</h3>"
+                       }
+                       else{
+                       //    data中没有id属性，查询失败
+                           html += "<h3> "+data.msg+"</h3>";
+                       }
+                       $("#show").html(html)
+                   }
+               });
+            });
+        });
+    </script>
+</html>

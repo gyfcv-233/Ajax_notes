@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域练习</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <button id="btn">查询</button>
+    <div id="show"></div>
+</body>
+        <script>
+            <!--接收后端传递过来的数据-->
+            function flight(data){
+            var html ='';
+            if(data){
+                html += "<h3> 航班号:"+data.flightNO+"</h3>";
+                html += "<h3> 出发地:"+data.from+"</h3>";
+                html += "<h3> 到达地:"+data.to+"</h3>";
+                html += "<h3> 时间:"+data.time+"</h3>";
+            }
+            $("#show").html(html)
+        }
+
+        $(function () {
+            $("#btn").click(function () {
+                //原生跨域请求
+                /*var body    = document.getElementsByTagName("body")[0];
+                var script  = document.createElement("script");
+                script.type = "text/javascript";
+                script.src  = "http://127.0.0.1:5000/07-server?callback=flight";
+                body.append(script); */
+
+            //    # flight('{ 'filghtNO':'MU763','from':'bejing'.....}')
+            // return cb +"(" + json.dumps(dic) + ")"
+
+            //    jquery 的跨域请求 jsonp
+               /* $.ajax({
+                    url:'http://127.0.0.1:5000/07-server',
+                    type:'get',
+                    dataType:'jsonp',
+                    jsonp:'callback',
+                    jsonpCallback:'flight'
+                });*/
+            //   jQuery 跨域 - jsonp(简易版)
+                $.ajax({
+                    url:'http://127.0.0.1:5000/07-server',
+                    type:'get',
+                    dataType:'jsonp',
+                    success:function (data) {
+                       /* console.log("航班："+data.flightNO);
+                        console.log("出发："+data.from);
+                        console.log("到达："+data.to);
+                        console.log("时间："+data.time) */
+                       var html ='';
+                       if(data){
+                            html += "<h3> 航班号:"+data.flightNO+"</h3>";
+                            html += "<h3> 出发地:"+data.from+"</h3>";
+                            html += "<h3> 到达地:"+data.to+"</h3>";
+                            html += "<h3> 时间:"+data.time+"</h3>";}
+                       $("#show").html(html);
+                    }
+                });
+
+            });
+        });
+        </script>
+</html>
